@@ -22,6 +22,7 @@ public class Product extends Auditable<String> {
     private String description;
     private Double price;
     private String brand;
+    private boolean active;
 
     @OneToMany(mappedBy = "product")
     private List<Image> images;
@@ -106,6 +107,14 @@ public class Product extends Auditable<String> {
 
     public void setProviders(List<Provider> providers) {
         this.providers = providers;
+    }
+
+    public boolean isActive() {
+        return active;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
     }
 
     public String toString() {

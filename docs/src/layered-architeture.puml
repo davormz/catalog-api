@@ -1,0 +1,37 @@
+@startuml
+
+title "Architecture"
+
+    class Entity{
+        +id
+    }
+
+    interface Repository{
+        
+    }
+
+    interface CrudRepository{
+        +save()
+        +delete()
+        +update()
+        +find()
+    }
+
+    interface Service{
+        +save()
+        +delete()
+        +update()
+        +find()
+    }
+
+    interface Controller{
+        +save()
+        +delete()
+        +update()
+        +find()
+    }
+
+    
+
+
+@enduml

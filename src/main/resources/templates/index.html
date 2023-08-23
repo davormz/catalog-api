@@ -4,8 +4,22 @@
         <meta charset="utf-8">
         <meta name="description" content="Product Catalog">
         <title>Product Catalog</title>
+        <link rel="stylesheet" href="styles/global.css">
+        <link rel="stylesheet" href="styles/navbar.css">
     </head>
     <body>
         <section th:insert="fragments/navbar.html" id="navbar"> </section>
-        
+        <section id="content">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h1>Product Catalog</h1>
+                        <p>Product Catalog is a simple web application that allows you to manage products and categories.</p>
+                        <p>It is built using Spring Boot, Spring MVC, Spring Data JPA, Thymeleaf, Bootstrap, and MySQL.</p>
+                        <p>It is a work in progress.</p>
+                        <p>Source code is available on <a href="https://github.com/davormz/catalog-api" target="_blank" >GitHub</a>.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
     </body>

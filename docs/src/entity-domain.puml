@@ -1,0 +1,57 @@
+@startuml
+
+    title "Entities"
+
+    abstract class Auditable {
+        #createdBy
+        #createdDate
+        #lastModifiedBy
+        #lastModifiedDate
+    }
+
+    class Product {
+        -id
+        --
+        -name
+        -description
+        -price
+        -brand
+        -category        
+    }
+
+    class Category {
+        -id
+        --
+        -name
+    }
+
+    class Provider {
+        -id
+        --
+        -name
+        -address
+        -phone
+        -email
+        -contact
+        -contactPhone
+        -contactEmail
+        -website
+        -active
+    }
+
+    class Image {
+        -id
+        --
+        -name
+        -url
+    }
+
+    Auditable <|-- Product
+    Auditable <|-- Category
+    Auditable <|-- Provider
+    Auditable <|-- Image
+    Product "1" o-- "many" Image
+    Product "1" o-- "0..1" Category
+    Product "many" -- "many" Provider
+
+@enduml
