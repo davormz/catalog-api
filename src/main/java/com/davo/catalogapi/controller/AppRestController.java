@@ -3,15 +3,19 @@ package com.davo.catalogapi.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.server.ResponseStatusException;
 
 import com.davo.catalogapi.domain.Product;
 import com.davo.catalogapi.domain.Provider;
+import com.davo.catalogapi.exception.NotFoundException;
 import com.davo.catalogapi.service.GenericCrudService;
 
 
@@ -32,13 +36,17 @@ public class AppRestController {
     }
 
     @GetMapping("/products/{id}")
-    public ResponseEntity<Product> getProductById(Long id) {
-        return ResponseEntity.ok().body(productService.findById(id));
+    public ResponseEntity<Product> getProductById(@PathVariable("id") Long id) {
+        try {
+            return ResponseEntity.ok().body(productService.findById(id));
+        } catch (NotFoundException e) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Provider Not Found");
+        }
     }
 
     @PostMapping("/products")
     public ResponseEntity<Product> createProduct(Product product) {
-        return ResponseEntity.ok().body(productService.save(product));
+        return ResponseEntity.accepted().body(productService.save(product));
     }
 
     @PutMapping("/products/{id}")
@@ -53,13 +61,17 @@ public class AppRestController {
     }
 
     @GetMapping("/providers/{id}")
-    public ResponseEntity<Provider> getProviderById(Long id) {
-        return ResponseEntity.ok().body(providerService.findById(id));
+    public ResponseEntity<Provider> getProviderById(@PathVariable("id") Long id) {
+        try {
+            return ResponseEntity.ok().body(providerService.findById(id));
+        } catch (NotFoundException e) {
+           throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Provider Not Found");
+        }
     }
 
     @PostMapping("/providers")
     public ResponseEntity<Provider> createProvider(Provider provider) {
-        return ResponseEntity.ok().body(providerService.save(provider));
+        return ResponseEntity.accepted().body(providerService.save(provider));
     }
 
     @PutMapping("/providers/{id}")

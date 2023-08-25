@@ -2,6 +2,7 @@ package com.davo.catalogapi.domain;
 
 import java.util.List;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -14,13 +15,27 @@ public class Provider extends Auditable<String>{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+
+    @Column(nullable = false, length = 100)
     private String name;
     private String address;
+
+    @Column( length = 20)
     private String phone;
+
+    @Column(nullable = false, length = 150)
     private String email;
+
+    @Column( length = 100)
     private String contact;
+
+    @Column( length = 20)
     private String contactPhone;
+
+    @Column( length = 150)
     private String contactEmail;
+
+    @Column( length = 100)
     private String website;
     private boolean active;
 

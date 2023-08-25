@@ -1,5 +1,6 @@
 package com.davo.catalogapi.domain;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -12,7 +13,11 @@ public class Image extends Auditable<String> {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
+
+    @Column(length = 100)
     private String name;
+
+    @Column(nullable = false)
     private String url;
 
     @ManyToOne

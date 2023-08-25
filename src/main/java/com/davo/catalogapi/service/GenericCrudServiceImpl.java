@@ -1,9 +1,12 @@
 package com.davo.catalogapi.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.CrudRepository;
+
+import com.davo.catalogapi.exception.NotFoundException;
 
 import jakarta.transaction.Transactional;
 
@@ -24,8 +27,14 @@ public class GenericCrudServiceImpl<T, R extends CrudRepository> implements Gene
     }
 
     @Override
-    public T findById(Long id) {
-        return (T) repository.findById(id);
+    public T findById(Long id) throws NotFoundException {
+        Optional<T> entity = repository.findById(id);
+        if (entity.isPresent()) {
+            return entity.get();
+        } else {
+            throw new NotFoundException("Entity not found");
+        }
+        
     }
 
     @Override
