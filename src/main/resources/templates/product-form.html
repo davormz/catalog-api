@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="utf-8">
+        <meta name="description" content="Product Catalog">
+        <title>Product Catalog</title>
+        <link rel="stylesheet" href="styles/global.css">
+        <link rel="stylesheet" href="styles/navbar.css">
+    </head>
+    <body>
+        <div th:replace="fragments/navbar :: navbar"></div>
+        <section id="content" class="container">
+            <h1>New Product</h1>
+            <form th:action="@{/products}" th:object="${product}" method="post">
+                <div class="form-group">
+                    <label for="name">Name: </label>
+                    <input type="text" th:field="*{name}" class="form-control" id="name" placeholder="Enter name">
+                </div>
+                <div class="form-group">
+                    <label for="price">Price: </label>
+                    <input type="number" th:field="*{price}" class="form-control" id="price" placeholder="Enter price">
+                </div>
+                <div class="form-group">
+                    <textarea th:field="*{description}" class="form-control" id="description" placeholder="Enter description"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="brand">Brand: </label>
+                    <input type="text" th:field="*{brand}" class="form-control" id="brand" placeholder="Enter brand">
+                </div>
+                <div class="form-group">
+                    <label for="category">Category: </label>
+                    <select th:field="*{category}" class="form-control" id="category">
+                        <option th:each="category : ${categories}" th:value="${category.id}" th:text="${category.name}"></option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </section>
+    </body>
+</html>

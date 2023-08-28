@@ -9,15 +9,17 @@
     </head>
     <body>
         <section th:insert="fragments/navbar.html" id="navbar"> </section>
-        <section id="content">
+        <section id="content" class="container">
             <h2>Products</h2>
+            <br/>
+            <a th:href="@{/product-form}">Add a new Product</a>
             <div id="products">
-                <div class="product">
-                    <img class="product-img" src="" alt="Product Image">
-                    <h3>Product Name</h3>
-                    <p>Product Description</p>
-                    <p>Product Price</p>
+                <div class="product container" th:each="prod : ${products}">
+                    <h3 th:text="${prod.name}"></h3>
+                    <p th:text="${prod.description}"></p>
+                    <p th:text="${prod.price}"></p>
                     <button>Edit</button>
                 </div>
+            </div>
         </section>
     </body>

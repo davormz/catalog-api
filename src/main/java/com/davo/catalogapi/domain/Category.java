@@ -45,6 +45,14 @@ public class Category extends Auditable<String> {
         this.name = name;
     }
 
+    public List<Product> getProducts() {
+      return products;
+    }
+
+    public void setProducts(List<Product> products) {
+      this.products = products;
+    }
+    
     public String toString(){
       return "Category{" +
         "id=" + id +

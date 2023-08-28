@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="utf-8">
+        <meta name="description" content="Product Catalog">
+        <title>Product Catalog</title>
+        <link rel="stylesheet" href="styles/global.css">
+        <link rel="stylesheet" href="styles/navbar.css">
+        
+    </head>
+    <body>
+        <section th:insert="fragments/navbar.html" id="navbar"> </section>
+        <section id="content">
+            <h1>Categories</h1>
+            <div id="category-form" class="container">
+                <form action="#" th:action="@{/categories}" th:object="${category}" method="post">
+                    <h3>Add a Category</h3>
+                    <label for="name">Name</label>
+                    <input type="text" th:field="*{name}" id="name" name="name">
+                    <button type="submit">Save</button>
+                </form>
+            </div>
+            <div id="category-list" class="container">
+                <table>
+                    <tr>
+                        <th>Id</th>
+                        <th>Category</th>
+                        <th>Number of Products</th>
+                        <th>Actions</th>
+                    </tr>
+                    <tr th:each="cat : ${allCategories}">
+                        <td th:text="${cat.id}"></td>
+                        <td th:text="${cat.name}"></td>
+                        <td ></td>
+                        <td>
+                            <button class="edit-button" 
+                                    data-category-id="${cat.id}"
+                                    th:attr="data-category-name=${cat.name}">
+                                Edit
+                            </button>
+                            <button class="delete-button" 
+                                    th:attr="data-category-id=${cat.id}">
+                                Delete
+                            </button>
+                        </td>
+                    </tr>
+                </table>
+                
+            </div>
+        </section>
+
+        <script>
+            // Add an event listener to all delete buttons
+            document.querySelectorAll('.delete-button').forEach(function(button) {
+                button.addEventListener('click', function() {
+                    const categoryId = this.getAttribute('data-category-id');
+                    //const categoryName = this.getAttribute('data-category-name');
+                    
+                    if (confirm(`Are you sure you want to delete ${categoryId}?`)) {
+                        // Send an AJAX request to delete the category
+                        fetch('/api/v1/category-delete/' +  categoryId, {
+                            method: 'DELETE',
+                        })
+                        .then(response => {
+                            if (response.status === 200) {
+                                // Update the UI (e.g., remove the deleted row)
+                                this.closest('tr').remove();
+                            } else {
+                                // Handle errors, e.g., display an error message
+                                console.error('Error deleting category');
+                            }
+                        })
+                        .catch(error => {
+                            console.error('Error:', error);
+                        });
+                    }
+                });
+            });
+        </script>
+
+    </body>
+</html>
