@@ -1,0 +1,44 @@
+/* 404 error page style */
+.container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+.error{
+    text-align: center;
+    font-size: 100px;
+    font-weight: bold;
+    color: #5994ca;
+}
+
+.error__title{
+    font-size: 50px;
+    font-weight: bold;
+    color: #5994ca;
+}
+
+.error__subtitle{
+    font-size: 30px;
+    font-weight: bold;
+    color: #5994ca;
+}
+
+.error__description{
+    font-size: 20px;
+    font-weight: bold;
+    color: #5994ca;
+}
+
+.error__button{
+    background-color: #5994ca;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    /* width: 100%; */
+    opacity: 0.9;
+    font-size: 20px;
+}

@@ -19,7 +19,7 @@ public class Category extends Auditable<String> {
     @Column(nullable = false, length = 120)
     private String name;
 
-    @OneToMany(mappedBy = "category")
+    @OneToMany(mappedBy = "category" )
     private List<Product> products = new ArrayList<Product>();
 
     public Category() {
