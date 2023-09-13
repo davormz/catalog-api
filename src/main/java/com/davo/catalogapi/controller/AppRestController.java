@@ -7,20 +7,19 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
-import com.davo.catalogapi.domain.Category;
 import com.davo.catalogapi.domain.Product;
 import com.davo.catalogapi.domain.Provider;
 import com.davo.catalogapi.exception.NotFoundException;
-import com.davo.catalogapi.service.GenericCrudService;
+import com.davo.catalogapi.service.CategoryService;
+import com.davo.catalogapi.service.ProductService;
+import com.davo.catalogapi.service.ProviderService;
 
 
 @RestController
@@ -28,13 +27,14 @@ import com.davo.catalogapi.service.GenericCrudService;
 public class AppRestController {
 
     @Autowired
-    GenericCrudService<Product> productService;
+    ProductService productService;
+    
 
     @Autowired
-    GenericCrudService<Provider> providerService;
+    ProviderService providerService;
 
     @Autowired
-    GenericCrudService<Category> categoryService;
+    CategoryService categoryService;
     
 
     @GetMapping("/products")
@@ -92,12 +92,5 @@ public class AppRestController {
         categoryService.deleteById(categoryId);
         return "redirect:/categories";
     }
-
-
-
-    public void setProductService(GenericCrudService<Product> productService) {
-        this.productService = productService;
-    }
-
         
 }

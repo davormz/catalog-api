@@ -8,6 +8,30 @@ body {
     margin-top: 50px;
 }
 
+#content > h1 {
+    margin-left: 50px;
+}
+
+#content > a {
+    margin-left: 50px;
+    text-decoration: none;
+    color: black;
+}
+
+#content > a:hover {
+    color: #5994ca;
+}
+
+/* styale an action pill define a outline as a pill */
+#content > .action-pill{
+    margin-left: 50px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 10px;
+    background: lightgrey;
+}
+
 .container {
     display: flex;
     padding: 15px;
@@ -95,11 +119,47 @@ button {
     margin: 8px 0;
     border: none;
     cursor: pointer;
-    /* width: 100%; */
     opacity: 0.9;
 }
 
 button:hover {
+    opacity:1;
+}
+
+.actions{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.btn-primary{
+    background-color: #5994ca;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    opacity: 0.9;
+}
+
+.btn-primary:hover {
+    opacity:1;
+}
+
+.btn-secondary{
+    background-color: #f1f1f1;
+    color: black;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    opacity: 0.9;
+}
+
+.btn-secondary:hover {
     opacity:1;
 }
 

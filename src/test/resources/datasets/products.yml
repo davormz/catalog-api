@@ -1,0 +1,9 @@
+products:
+ - id: 1
+   name: "Product 1"
+   price: 50.0
+   brand: "xyz"
+ - id: 2
+   name: "Product 2"
+   price: 70.0
+   brand: "xyz"

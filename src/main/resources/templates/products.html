@@ -6,18 +6,19 @@
         <title>Product Catalog</title>
         <link rel="stylesheet" href="styles/global.css">
         <link rel="stylesheet" href="styles/navbar.css">
+        <link rel="stylesheet" href="styles/products.css">
     </head>
     <body>
         <section th:insert="fragments/navbar.html" id="navbar"> </section>
-        <section id="content" class="container">
-            <h2>Products</h2>
-            <br/>
-            <a th:href="@{/product-form}">Add a new Product</a>
+        <section id="content" >
+            <h1>Products</h1>
+            <a class="action-pill" th:href="@{/product-form}">Add a new Product</a>
             <div id="products">
-                <div class="product container" th:each="prod : ${products}">
+                <div class="product" th:each="prod : ${products}">
                     <h3 th:text="${prod.name}"></h3>
+                    <p th:text="${'Category: ' + prod.category.name}"> </p>
                     <p th:text="${prod.description}"></p>
-                    <p th:text="${prod.price}"></p>
+                    <p th:text="${#numbers.formatCurrency(prod.price)}"></p>
                     <button>Edit</button>
                 </div>
             </div>

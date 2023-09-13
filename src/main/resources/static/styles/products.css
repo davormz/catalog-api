@@ -1,0 +1,45 @@
+/* Products list style with responsive*/
+
+#products{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 10px;
+    padding: 10px;
+    border-radius: 10px;
+    background: lightgrey;
+}
+
+#products > div {
+    margin: 10px;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+#products > div > h3 {
+    text-align: center;
+}
+
+.product {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+    padding: 10px;
+    border-radius: 10px;
+    background: papayawhip;
+}
+
+.product > p {
+    margin: 10px;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.product > h3 {
+    text-align: center;
+}
+
+
+

@@ -2,7 +2,7 @@
 
 ## Description
 
-This API is used to manage the products catalog of the application. This project is intended to practice Spring Boot concepts.
+This API is used to manage the products catalog of the application. This project is intended to practice Spring Boot and microservices concepts.
 
 The spring cli was used to bootstrap the project using the following command:
 
@@ -88,4 +88,8 @@ docker-compose up -d
 ### Entity domain
 
 The entity domain is located in the `com.davo.catalogapi.domain` package.
+
+
+
+
 
